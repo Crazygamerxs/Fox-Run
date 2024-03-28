@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://cbmeixufebpgf"]
+
+[ext_resource type="Texture2D" uid="uid://b5x0l3vtpsq5g" path="res://Sunny-land-files/Sunny-land-assets-files/PNG/sprites/gem/gem-1.png" id="1_0redj"]
+[ext_resource type="Script" path="res://Collectables/Diamond.gd" id="1_7ryan"]
+[ext_resource type="Texture2D" uid="uid://c5dpuvqcfin0v" path="res://Sunny-land-files/Sunny-land-assets-files/PNG/sprites/gem/gem-2.png" id="2_f50jf"]
+[ext_resource type="Texture2D" uid="uid://5fdcilhbav75" path="res://Sunny-land-files/Sunny-land-assets-files/PNG/sprites/gem/gem-3.png" id="3_1ah4h"]
+[ext_resource type="Texture2D" uid="uid://dh8d5fxe1v1eg" path="res://Sunny-land-files/Sunny-land-assets-files/PNG/sprites/gem/gem-4.png" id="4_gya57"]
+[ext_resource type="Texture2D" uid="uid://c1prr102gepcv" path="res://Sunny-land-files/Sunny-land-assets-files/PNG/sprites/gem/gem-5.png" id="5_qusaw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uke68"]
+radius = 8.06226
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4hpyx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0redj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_f50jf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1ah4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gya57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qusaw")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[node name="Diamond" type="Area2D"]
+script = ExtResource("1_7ryan")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_uke68")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(1.5, 1.57692)
+sprite_frames = SubResource("SpriteFrames_4hpyx")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.892109
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
